@@ -9,7 +9,11 @@ export default {
   },
   plugins: [require('daisyui'),],
   daisyui: {
-    themes: true,
+    themes: [
+    "dim",
+    "nord",
+    "sunset",
+  ],
     styled: true,
   }
 }
