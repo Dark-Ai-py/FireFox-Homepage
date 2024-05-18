@@ -3,9 +3,9 @@
 
 	let inputContent = ref("");
 	let searchEngine = "https://search.brave.com/search?q=";
-	let autolinks = [
+	const autolinks = [
 		{
-			locater: "@y ",
+			locator: "@y ",
 			url: "https://www.youtube.com/results?search_query=",
 		},
 		{
@@ -20,7 +20,7 @@
 
 	const isValidUrl = () => {
 		var urlPattern = new RegExp(
-			"^(https?:\\/\\/)?" + // validate protocol
+			"^(https?:\/\/)?" + // validate protocol
 				"((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // validate domain name
 				"((\\d{1,3}\\.){3}\\d{1,3}))" + // validate OR ip (v4) address
 				"(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // validate port and path
@@ -34,7 +34,8 @@
 	const isUsingAutoLinks = () => {
 		let autolinkIndex = -1;
 		for (let i = 0; i < autolinks.length; i++) {
-			const pattern = new RegExp(`^${autolinks[i].locater}`);
+			const pattern = new RegExp(`^${autolinks[i].locator}`);
+
 			if (pattern.test(inputContent.value)) {
 				autolinkIndex = i;
 				break;
@@ -43,11 +44,20 @@
 		return autolinkIndex;
 	};
 
+	function containHTTP() {
+		const httpsRegx = new RegExp("^(https?:\/\/)?");
+		return !httpsRegx.test(inputContent.value);
+	}
+
 	function search() {
 		if (inputContent.value != "") {
 			if (isUsingAutoLinks() == -1) {
 				if (isValidUrl() == true) {
-					window.location.href = inputContent.value;
+					if (containHTTP() == true) {
+						window.location.href = `${inputContent.value}`;
+					} else if (containHTTP() == false) {
+						window.location.href = `https://${inputContent.value}`;
+					}
 				} else {
 					window.location.href = `${searchEngine}${inputContent.value}`;
 				}
