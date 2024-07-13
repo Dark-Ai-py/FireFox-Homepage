@@ -27,8 +27,8 @@
 	]);
 
 	let tokenActiveCalender = ref(true);
-	// true for google
-	// false for apple
+	// false for google
+	// true for apple
 
 	const theme = "dim";
 </script>
@@ -61,21 +61,41 @@
 							class="join-item btn btn-square w-fit p-4 ml-auto"
 							type="radio"
 							name="options"
-							aria-label="Google Calender"
 							checked="checked"
+							aria-label="Apple Calender"
 							@click="tokenActiveCalender = true"
 						/>
 						<input
 							class="join-item btn btn-square w-fit p-4 mr-auto"
 							type="radio"
 							name="options"
-							aria-label="Apple Calender"
+							aria-label="Google Calender"
 							@click="tokenActiveCalender = false"
 						/>
 					</div>
 					<div class="divider"></div>
-					<iframe
+					<!-- <iframe
 						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showPrint=0&showCalendars=0&title=Google&src=ZjhudWh2MWw0OWtsczVidmZncnZnZWNrOW5rdmtua25AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000"
+						style="border-width: 0"
+						width="800"
+						height="600"
+						frameborder="0"
+						scrolling="no"
+						
+					></iframe>
+
+					<iframe
+						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showPrint=0&showCalendars=0&mode=WEEK&title=Google&src=dGhlc29oYW44NEBnbWFpbC5jb20&color=%237CB342"
+						style="border-width: 0"
+						width="800"
+						height="600"
+						frameborder="0"
+						scrolling="no"
+						:class="tokenActiveCalender ? `opacity-100` : `opacity-0 h-0`"
+						class="rounded"
+					></iframe> -->
+					<iframe
+						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showCalendars=0&showPrint=0&title=Apple&mode=WEEK&src=ZWRzajM3djM1bjEzbnFhN3FibmY2dmkydTVuZ25hZGxAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZjhudWh2MWw0OWtsczVidmZncnZnZWNrOW5rdmtua25AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D81B60&color=%23D50000"
 						style="border-width: 0"
 						width="800"
 						height="600"
@@ -84,9 +104,8 @@
 						:class="tokenActiveCalender ? `opacity-100` : `opacity-0 h-0`"
 						class="rounded"
 					></iframe>
-
 					<iframe
-						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showCalendars=0&showPrint=0&title=Apple&src=dGhlc29oYW44NEBnbWFpbC5jb20&src=ZjhudWh2MWw0OWtsczVidmZncnZnZWNrOW5rdmtua25AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%237CB342&color=%23D50000"
+						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showCalendars=0&showPrint=0&mode=WEEK&src=dGhlc29oYW44NEBnbWFpbC5jb20&color=%237CB342"
 						style="border-width: 0"
 						width="800"
 						height="600"
