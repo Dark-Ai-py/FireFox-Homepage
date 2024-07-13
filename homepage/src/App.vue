@@ -26,6 +26,10 @@
 		},
 	]);
 
+	let tokenActiveCalender = ref(true);
+	// true for google
+	// false for apple
+
 	const theme = "dim";
 </script>
 
@@ -40,12 +44,68 @@
 				v-for="link in links"
 				:key="link"
 				:title="link.title"
-				:description="link.description"
 				:logo="link.logo"
 				:url="link.url"
+				:canClick="true"
 			/>
+			<quickLink
+				:title="`Calender`"
+				:logo="`https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_31_256.ico`"
+				:canClick="false"
+				onclick="my_modal_2.showModal()"
+			/>
+			<dialog id="my_modal_2" class="modal m-h-800">
+				<div class="modal-box max-w-fit m-h-800 overflow-hidden">
+					<div class="join w-full">
+						<input
+							class="join-item btn btn-square w-fit p-4 ml-auto"
+							type="radio"
+							name="options"
+							aria-label="Google Calender"
+							checked="checked"
+							@click="tokenActiveCalender = true"
+						/>
+						<input
+							class="join-item btn btn-square w-fit p-4 mr-auto"
+							type="radio"
+							name="options"
+							aria-label="Apple Calender"
+							@click="tokenActiveCalender = false"
+						/>
+					</div>
+					<div class="divider"></div>
+					<iframe
+						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showPrint=0&showCalendars=0&title=Google&src=ZjhudWh2MWw0OWtsczVidmZncnZnZWNrOW5rdmtua25AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000"
+						style="border-width: 0"
+						width="800"
+						height="600"
+						frameborder="0"
+						scrolling="no"
+						:class="tokenActiveCalender ? `opacity-100` : `opacity-0 h-0`"
+						class="rounded"
+					></iframe>
+
+					<iframe
+						src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDenver&bgcolor=%23ffffff&showCalendars=0&showPrint=0&title=Apple&src=dGhlc29oYW44NEBnbWFpbC5jb20&src=ZjhudWh2MWw0OWtsczVidmZncnZnZWNrOW5rdmtua25AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%237CB342&color=%23D50000"
+						style="border-width: 0"
+						width="800"
+						height="600"
+						frameborder="0"
+						scrolling="no"
+						:class="tokenActiveCalender ? `opacity-0 h-0` : `opacity-100`"
+						class="rounded"
+					></iframe>
+				</div>
+				<form method="dialog" class="modal-backdrop">
+					<button>close</button>
+				</form>
+			</dialog>
 		</div>
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+	.m-h-800 {
+		max-height: 800px;
+	}
+</style>

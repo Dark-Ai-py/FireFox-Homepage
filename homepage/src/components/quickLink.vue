@@ -1,8 +1,15 @@
 <script setup>
-	const { title, logo, url } = defineProps(["title", "logo", "url"]);
+	const { title, logo, url, canClick } = defineProps([
+		"title",
+		"logo",
+		"url",
+		"canClick",
+	]);
 
 	function click() {
-		window.location.href = url;
+		if (canClick == true) {
+			window.location.href = url;
+		}
 	}
 </script>
 
