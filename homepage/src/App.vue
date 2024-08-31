@@ -24,6 +24,11 @@
 			logo: "https://ssl.gstatic.com/images/branding/product/2x/hh_drive_36dp.png",
 			url: "https://drive.google.com/",
 		},
+		{
+			title: "iCloud",
+			logo: "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://icloud.com&size=128",
+			url: "https://www.icloud.com/",
+		},
 	]);
 
 	let tokenActiveCalender = ref(true);
@@ -34,10 +39,7 @@
 </script>
 
 <template>
-	<div
-		class="flex flex-col justify-center w-screen h-screen items-center"
-		:data-theme="theme"
-	>
+	<div class="flex flex-col justify-center w-screen h-screen items-center" :data-theme="theme">
 		<searchBar />
 		<div class="flex space-x-2 flex-wrap w-4/5 justify-center">
 			<quickLink
